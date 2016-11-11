@@ -4,7 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Android.iml" filepath="$PROJECT_DIR$/Android.iml" />
       <module fileurl="file://$PROJECT_DIR$/app-default/app-default.iml" filepath="$PROJECT_DIR$/app-default/app-default.iml" />
-      <module fileurl="file://$PROJECT_DIR$/datalocal/datalocal.iml" filepath="$PROJECT_DIR$/datalocal/datalocal.iml" />
+      <module fileurl="file://$PROJECT_DIR$/webserver/webserver.iml" filepath="$PROJECT_DIR$/webserver/webserver.iml" />
     </modules>
   </component>
 </project>
