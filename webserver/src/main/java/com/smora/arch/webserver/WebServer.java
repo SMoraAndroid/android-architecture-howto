@@ -4,6 +4,9 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
 
+import com.smora.arch.webserver.asynctask.StartServerTask;
+import com.smora.arch.webserver.asynctask.StopServerTask;
+
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -24,60 +27,82 @@ public class WebServer {
         if (singleton == null) {
             synchronized (WebServer.class) {
                 if (singleton == null) {
-                    singleton = new WebServer(context);
+                    singleton = new WebServer(context.getApplicationContext());
                 }
             }
         }
         return singleton;
     }
 
-    private final Server mServer;
+    private final Server server;
 
-    public WebServer(final Context context) {
-        mServer = new Server(context);
+    private WebServer(final Context context) {
+        server = new Server(context);
     }
 
-    public void start() {
-        Log.v(LOG_TAG, "start");
+    public void start() throws WebServerException {
+        synchronized (WebServer.class) {
+            Log.v(LOG_TAG, "start");
 
-        if (mServer.isAlive()) {
-            Log.v(LOG_TAG, "server is already alive");
-            return;
-        }
+            if (server.isAlive()) {
+                Log.v(LOG_TAG, "server is already alive");
+                return;
+            }
 
-        try {
-            mServer.start();
-            Log.v(LOG_TAG, "server started");
-        } catch (IOException e) {
-            Log.w(LOG_TAG, "error when starting server", e);
+            try {
+                server.start();
+                Log.v(LOG_TAG, "server started");
+            } catch (IOException e) {
+                Log.w(LOG_TAG, "error when starting server", e);
+                throw new WebServerException(e);
+            }
         }
     }
 
     public void stop() {
-        Log.v(LOG_TAG, "stop");
+        synchronized (WebServer.class) {
+            Log.v(LOG_TAG, "stop");
 
-        if (!mServer.isAlive()) {
-            Log.v(LOG_TAG, "server is already stopped");
-            return;
+            if (!server.isAlive()) {
+                Log.v(LOG_TAG, "server is already stopped");
+                return;
+            }
+
+            server.stop();
+            Log.v(LOG_TAG, "server stopped");
         }
+    }
 
-        mServer.stop();
-        Log.v(LOG_TAG, "server stopped");
+    public void startAsync(final StartCallback callback) {
+        new StartServerTask(this, callback).execute();
+    }
+
+    public void stopAsync() {
+        new StopServerTask(this).execute();
+    }
+
+    public interface StartCallback {
+        void onServerStartSucceed();
+        void onServerStartFailed();
     }
 
     private static class Server extends NanoHTTPD {
 
-        private AssetManager mAssetManager;
+        private AssetManager assetManager;
 
         public Server(final Context context) {
             super(SERVER_PORT);
-            mAssetManager = context.getAssets();
+            assetManager = context.getAssets();
         }
 
         @Override
         public Response serve(IHTTPSession session) {
             try {
-                final InputStream is = mAssetManager.open("ws" + session.getUri() + "/resp.json");
+                if ("/favicon.ico".equals(session.getUri())) {
+                    return null;
+                }
+
+                final InputStream is = assetManager.open("ws" + session.getUri() + "/resp.json");
                 int size = is.available();
                 byte buffer[] = new byte[size];
                 is.read(buffer);
