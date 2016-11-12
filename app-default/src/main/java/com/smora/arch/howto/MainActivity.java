@@ -15,7 +15,7 @@ public class MainActivity extends AppCompatActivity {
 
         WebServer.with(getApplicationContext()).start();
 
-        ((WebView) findViewById(R.id.webview)).loadUrl("http://localhost:8080");
+        ((WebView) findViewById(R.id.webview)).loadUrl("http://localhost:8080/place/0");
     }
 
     @Override

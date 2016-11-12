@@ -1,9 +1,11 @@
 package com.smora.arch.webserver;
 
 import android.content.Context;
+import android.content.res.AssetManager;
 import android.util.Log;
 
 import java.io.IOException;
+import java.io.InputStream;
 
 import fi.iki.elonen.NanoHTTPD;
 
@@ -29,12 +31,10 @@ public class WebServer {
         return singleton;
     }
 
-    private final Context mContext;
     private final Server mServer;
 
     public WebServer(final Context context) {
-        mContext = context;
-        mServer = new Server();
+        mServer = new Server(context);
     }
 
     public void start() {
@@ -67,13 +67,28 @@ public class WebServer {
 
     private static class Server extends NanoHTTPD {
 
-        public Server() {
+        private AssetManager mAssetManager;
+
+        public Server(final Context context) {
             super(SERVER_PORT);
+            mAssetManager = context.getAssets();
         }
 
         @Override
         public Response serve(IHTTPSession session) {
-            return newFixedLengthResponse("Hello WebServer");
+            try {
+                final InputStream is = mAssetManager.open("ws" + session.getUri() + "/resp.json");
+                int size = is.available();
+                byte buffer[] = new byte[size];
+                is.read(buffer);
+                is.close();
+                return newFixedLengthResponse(new String(buffer));
+
+            } catch (IOException e) {
+                Log.w(LOG_TAG, "Error server: ", e);
+                return newFixedLengthResponse("Error server : "  + e.getLocalizedMessage());
+            }
+
         }
     }
 
