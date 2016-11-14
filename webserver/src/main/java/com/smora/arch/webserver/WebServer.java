@@ -7,6 +7,7 @@ import android.util.Log;
 import com.smora.arch.webserver.asynctask.StartServerTask;
 import com.smora.arch.webserver.asynctask.StopServerTask;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 
@@ -102,7 +103,7 @@ public class WebServer {
                     return null;
                 }
 
-                final InputStream is = assetManager.open("ws" + session.getUri() + "/resp.json");
+                final InputStream is = assetManager.open(getFileName(session.getUri()));
                 int size = is.available();
                 byte buffer[] = new byte[size];
                 is.read(buffer);
@@ -111,9 +112,22 @@ public class WebServer {
 
             } catch (IOException e) {
                 Log.w(LOG_TAG, "Error server: ", e);
-                return newFixedLengthResponse("Error server : "  + e.getLocalizedMessage());
+                Response response = newFixedLengthResponse("Error server : "  + e.getLocalizedMessage());
+                if (e instanceof FileNotFoundException) {
+                    response.setStatus(Response.Status.NOT_FOUND);
+                } else {
+                    response.setStatus(Response.Status.INTERNAL_ERROR);
+                }
+                return response;
             }
 
+        }
+
+        private String getFileName(final String uri) {
+            if (uri.startsWith("/images")) {
+                return uri.substring(1) + ".jpg";
+            }
+            return uri.substring(1) + "/resp.json";
         }
     }
 

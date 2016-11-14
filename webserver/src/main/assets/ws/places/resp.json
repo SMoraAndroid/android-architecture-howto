@@ -15,28 +15,25 @@
     "id":"678be05f-ed32-4746-a14d-94c295201f28",
     "label":"Westminster, London",
     "country":"England",
-    "image_id":"b855d6fa-3093-4014-b00a-61f49f19e4c3",
+    "image_id":"b855d6fa-3093-4014-b00a-61f49f19e4c3"
   },
   {
     "id":"0b22f395-983a-40fa-a1a3-0e316092d747",
-    "title":"Milsons Point, Sydney, Australia",
-    "author":"Keith McInnes",
-    "credit":"https://plus.google.com/+KeithMcInnes",
-    "description":""
+    "label":"Milsons Point, Sydney",
+    "country":"Australia",
+    "image_id":"be1f42fb-af0c-4800-940b-417526f36121"
   },
   {
     "id":"8b5b1365-85f7-42ec-b581-484fdea3ab67",
-    "title":"Lofoten Islands, Norway",
-    "author":"Colby Brown",
-    "credit":"https://plus.google.com/+ColbyBrown",
-    "description":""
+    "label":"Lofoten Islands",
+    "country":"Norway",
+    "image_id":"f405c553-c335-439c-9e2e-1f4d5c709fb8"
   },
   {
     "id":"886cbd77-8f6e-4e82-bb39-f5f8edf93ab1",
-    "title":"Valletta, Malta",
-    "author":"Meleah Reardon",
-    "credit":"https://plus.google.com/+MeleahReardon",
-    "description":""
+    "label":"Valletta",
+    "country":"Malta",
+    "image_id":"0266ec83-6236-44c5-8077-58e52fafcd0d"
   },
   {
     "id":"d94ed5b2-011a-4b2d-a9b4-51b9325d8f4f",

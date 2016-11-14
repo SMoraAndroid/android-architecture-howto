@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
 
     private final WebServer.StartCallback startServerCallback = new WebServer.StartCallback() {
         public void onServerStartSucceed() {
-            ((WebView) findViewById(R.id.webview)).loadUrl("http://localhost:8080/place/0");
+            ((WebView) findViewById(R.id.webview)).loadUrl("http://localhost:8080/ws/places");
         }
 
         public void onServerStartFailed() {

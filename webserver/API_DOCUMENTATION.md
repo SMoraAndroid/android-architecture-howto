@@ -39,7 +39,7 @@
   { "error" : "Internal Server Error" }
   ```
 
-### *Get Places Details*
+### *Get Place Details*
 
 *Returns json data with one place details.*
 
@@ -94,7 +94,7 @@
 * **Success Response:**
 
   * *Code:* `200`
-  * *Content:* image fle
+  * *Content:* image file
 
 * **Error Response:**
 
