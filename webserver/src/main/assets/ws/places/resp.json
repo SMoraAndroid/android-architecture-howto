@@ -1,0 +1,69 @@
+[
+  {
+    "id":"87beb070-94d1-4c81-98da-d58fab1727f6",
+    "label":"Manhattan, NY",
+    "country":"United States of America",
+    "image_id":"9b6c30e1-d4a2-4302-9306-f3db5bd5f90a"
+  },
+  {
+    "id":"78f8bc4c-f992-48bc-afde-71b8d80eeb7b",
+    "label":"Manarola, Cinque Terre",
+    "country":"Italy",
+    "image_id":"c2c46ffd-8377-4567-9d11-9f4f4a3571dc"
+  },
+  {
+    "id":"678be05f-ed32-4746-a14d-94c295201f28",
+    "label":"Westminster, London",
+    "country":"England",
+    "image_id":"b855d6fa-3093-4014-b00a-61f49f19e4c3",
+  },
+  {
+    "id":"0b22f395-983a-40fa-a1a3-0e316092d747",
+    "title":"Milsons Point, Sydney, Australia",
+    "author":"Keith McInnes",
+    "credit":"https://plus.google.com/+KeithMcInnes",
+    "description":""
+  },
+  {
+    "id":"8b5b1365-85f7-42ec-b581-484fdea3ab67",
+    "title":"Lofoten Islands, Norway",
+    "author":"Colby Brown",
+    "credit":"https://plus.google.com/+ColbyBrown",
+    "description":""
+  },
+  {
+    "id":"886cbd77-8f6e-4e82-bb39-f5f8edf93ab1",
+    "title":"Valletta, Malta",
+    "author":"Meleah Reardon",
+    "credit":"https://plus.google.com/+MeleahReardon",
+    "description":""
+  },
+  {
+    "id":"d94ed5b2-011a-4b2d-a9b4-51b9325d8f4f",
+    "title":"Bellagio Hotel & Casino, Las Vegas, NV",
+    "author":"Andrea Martinez",
+    "credit":"https://plus.google.com/+AndreaMartinez",
+    "description":""
+  },
+  {
+    "id":"df9ffeb8-fbcc-4aec-8e67-cbd3b3b47d94",
+    "title":"Badwater Basin, Death Valley National Park",
+    "author":"David Shield",
+    "credit":"https://plus.google.com/+DavidShield",
+    "description":""
+  },
+  {
+    "id":"e2a7736e-1e33-4431-92a7-971c0863e9eb",
+    "title":"Badwater Basin, Death Valley National Park",
+    "author":"Mikhail Petrovsky",
+    "credit":"https://plus.google.com/+MikhailPetrovsky",
+    "description":""
+  },
+  {
+    "id":"134306f5-e4b3-4830-b892-2717e5f8ffa7",
+    "title":"Lake Wanaka, New Zealand",
+    "author":"Niall McKenna",
+    "credit":"https://plus.google.com/+NiallMcKenna",
+    "description":""
+  }
+]
