@@ -45,7 +45,7 @@
   * *Content:*
 
   ```json
-  { error : "Internal Server Error" }
+  { "error" : "Internal Server Error" }
   ```
 
 #### *Get Places Details*
@@ -72,7 +72,7 @@
       "id":"87beb070-94d1-4c81-98da-d58fab1727f6",
       "label":"Manhattan, NY",
       "country":"United States of America",
-      "image_id":"9b6c30e1-d4a2-4302-9306-f3db5bd5f90a"
+      "image_id":"9b6c30e1-d4a2-4302-9306-f3db5bd5f90a",
       "image_author":"Michael Muraz",
       "image_credit":"https://plus.google.com/+MichaelMuraz",
       "description":"Manhattan is the most densely populated borough of New York City, its economic and administrative center, and the city's historical birthplace. The borough is coextensive with New York County, founded on November 1, 1683, as one of the original counties of the U.S. state of New York. The borough consists mostly of Manhattan Island, bounded by the East, Hudson, and Harlem Rivers, and also includes several small adjacent islands and Marble Hill, a small neighborhood on the U.S. mainland.",
@@ -87,7 +87,7 @@
   * *Content:*
 
   ```json
-  { error : "Internal Server Error" }
+  { "error" : "Internal Server Error" }
   ```
 
 #### *Get Image*
@@ -115,6 +115,6 @@
   * *Content:*
 
   ```json
-  { error : "Image Not Found" }
+  { "error" : "Image Not Found" }
   ```
 
