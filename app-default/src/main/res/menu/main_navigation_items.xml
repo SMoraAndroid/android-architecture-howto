@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/action_browse_all"
+          android:title="@string/menu_browse_all"
+          android:icon="@drawable/ic_menu_browse_all_24dp" />
+    <item android:id="@+id/action_favorites"
+          android:title="@string/menu_favorites"
+          android:icon="@drawable/ic_menu_favorite_24dp" />
+    <item android:id="@+id/action_settings"
+          android:title="@string/menu_settings"
+          android:icon="@drawable/ic_menu_settings_24dp" />
+</menu>

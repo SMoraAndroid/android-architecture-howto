@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Arch. HowTo</string>
+    <string name="menu_browse_all">Browse all</string>
+    <string name="menu_favorites">Favorites</string>
+    <string name="menu_settings">Settings</string>
+
 </resources>
