@@ -37,30 +37,26 @@
   },
   {
     "id":"d94ed5b2-011a-4b2d-a9b4-51b9325d8f4f",
-    "title":"Bellagio Hotel & Casino, Las Vegas, NV",
-    "author":"Andrea Martinez",
-    "credit":"https://plus.google.com/+AndreaMartinez",
-    "description":""
+    "label":"Bellagio Hotel & Casino, Las Vegas, NV",
+    "country":"United States of America",
+    "image_id":"d793ae01-39c2-46dd-9238-d67de36a96e8"
   },
   {
     "id":"df9ffeb8-fbcc-4aec-8e67-cbd3b3b47d94",
-    "title":"Badwater Basin, Death Valley National Park",
-    "author":"David Shield",
-    "credit":"https://plus.google.com/+DavidShield",
-    "description":""
+    "label":"Badwater Basin, Death Valley National Park",
+    "country":"United States of America",
+    "image_id":"4360d28b-7b27-4c11-a5ab-df4f7c4922ca"
   },
   {
     "id":"e2a7736e-1e33-4431-92a7-971c0863e9eb",
-    "title":"Badwater Basin, Death Valley National Park",
-    "author":"Mikhail Petrovsky",
-    "credit":"https://plus.google.com/+MikhailPetrovsky",
-    "description":""
+    "label":"Patagonia, South America",
+    "country":"Argentina and Chile",
+    "image_id":"cba0a8ad-41c9-442f-af80-f311b2fc4839"
   },
   {
     "id":"134306f5-e4b3-4830-b892-2717e5f8ffa7",
-    "title":"Lake Wanaka, New Zealand",
-    "author":"Niall McKenna",
-    "credit":"https://plus.google.com/+NiallMcKenna",
-    "description":""
+    "label":"Lake Wanaka",
+    "country":"New Zealand",
+    "image_id":"016a9bf5-4baa-4298-8cf3-67af43d7a455"
   }
 ]
