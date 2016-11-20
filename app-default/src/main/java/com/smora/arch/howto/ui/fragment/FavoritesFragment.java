@@ -64,7 +64,7 @@ public class FavoritesFragment extends Fragment {
     }
 
     private void showPlaces(final List<Place> places) {
-        PlaceAdapter adapter = new PlaceAdapter(places);
+        PlaceAdapter adapter = new PlaceAdapter(getContext(), places);
         recyclerView.setAdapter(adapter);
     }
 

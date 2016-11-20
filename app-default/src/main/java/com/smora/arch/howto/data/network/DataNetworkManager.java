@@ -19,6 +19,6 @@ public class DataNetworkManager {
     }
 
     public static String getImageUrl(final String imageId) {
-        return END_POINT + "/images/ " + imageId;
+        return END_POINT + "/images/" + imageId;
     }
 }
