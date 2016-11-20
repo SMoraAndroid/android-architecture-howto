@@ -19,13 +19,19 @@
        "id":"87beb070-94d1-4c81-98da-d58fab1727f6",
        "label":"Manhattan, NY",
        "country":"United States of America",
-       "image_id":"9b6c30e1-d4a2-4302-9306-f3db5bd5f90a"
+       "image_id":"9b6c30e1-d4a2-4302-9306-f3db5bd5f90a",
+       "description":"Manhattan is the most densely populated borough of New York City, its economic and administrative center, and the city's historical birthplace.",
+       "latitiude":40.790278,
+       "longitude":-73.959722
      },
      {
        "id":"78f8bc4c-f992-48bc-afde-71b8d80eeb7b",
        "label":"Manarola, Cinque Terre",
        "country":"Italy",
-       "image_id":"4b950a69-b225-4b34-9860-5816b57fe2a0"
+       "image_id":"4b950a69-b225-4b34-9860-5816b57fe2a0",
+       "description":"The Cinque Terre is a rugged portion of coast on the Italian Riviera. It is in the Liguria region of Italy, to the west of the city of La Spezia.",
+       "latitiude":44.119389,
+       "longitude":9.728278
      }
   ]
   ```
