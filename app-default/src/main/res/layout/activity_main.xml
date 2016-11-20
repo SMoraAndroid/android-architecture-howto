@@ -1,12 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
+<android.support.design.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.smora.arch.howto.MainActivity">
+    android:background="@android:color/background_light"
+    android:fitsSystemWindows="true"
+    tools:context="com.smora.arch.howto.ui.MainActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:layout_scrollFlags="scroll|enterAlways"
+            app:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+            app:layout_collapseMode="pin" />
+    </android.support.design.widget.AppBarLayout>
 
     <FrameLayout
         android:id="@+id/content"
@@ -21,5 +34,8 @@
         app:itemBackground="@color/colorPrimary"
         app:itemIconTint="@color/main_navigation_item_colors"
         app:itemTextColor="@color/main_navigation_item_colors"
-        app:menu="@menu/main_navigation_items" />
-</RelativeLayout>
+        app:menu="@menu/main_navigation_items"
+        app:layout_anchor="@+id/content"
+        app:layout_anchorGravity="bottom"
+        app:layout_scrollFlags="scroll|enterAlways"/>
+</android.support.design.widget.CoordinatorLayout>

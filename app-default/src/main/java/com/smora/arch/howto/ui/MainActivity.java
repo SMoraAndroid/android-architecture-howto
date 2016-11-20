@@ -1,15 +1,17 @@
-package com.smora.arch.howto;
+package com.smora.arch.howto.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
-import com.smora.arch.howto.fragment.BrowseAllFragment;
-import com.smora.arch.howto.fragment.FavoritesFragment;
-import com.smora.arch.howto.fragment.SettingsFragment;
+import com.smora.arch.howto.R;
+import com.smora.arch.howto.ui.fragment.BrowseAllFragment;
+import com.smora.arch.howto.ui.fragment.FavoritesFragment;
+import com.smora.arch.howto.ui.fragment.SettingsFragment;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setSupportActionBar((Toolbar)findViewById(R.id.toolbar));
 
         ((BottomNavigationView) findViewById(R.id.main_bottom_navigation)).setOnNavigationItemSelectedListener(onNavigationItemSelectedListener);
 

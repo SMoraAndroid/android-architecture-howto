@@ -1,4 +1,4 @@
-package com.smora.arch.howto.fragment;
+package com.smora.arch.howto.ui.fragment;
 
 
 import android.os.Bundle;

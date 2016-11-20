@@ -1,4 +1,4 @@
-package com.smora.arch.howto;
+package com.smora.arch.howto.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
