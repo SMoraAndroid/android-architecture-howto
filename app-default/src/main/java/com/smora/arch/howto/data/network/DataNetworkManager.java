@@ -17,4 +17,8 @@ public class DataNetworkManager {
     public static WebService getService() {
         return WEB_SERVICE;
     }
+
+    public static String getImageUrl(final String imageId) {
+        return END_POINT + "/images/ " + imageId;
+    }
 }
