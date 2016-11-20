@@ -3,6 +3,9 @@
     <color name="colorPrimary">#3F51B5</color>
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
-    <color name="white">#ffffff</color>
-    <color name="white_alpha70">#a9ffffff</color>
+
+    <color name="white">#FFFFFF</color>
+    <color name="white_alpha70">#a9FFFFFF</color>
+
+    <color name="app_background">#f5f5f5</color>
 </resources>
