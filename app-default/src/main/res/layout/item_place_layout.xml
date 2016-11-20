@@ -22,7 +22,7 @@
             <ImageView
                 android:id="@+id/item_place_imageview"
                 android:layout_width="match_parent"
-                android:layout_height="100dp"/>
+                android:layout_height="wrap_content"/>
 
             <ImageView
                 android:id="@+id/item_icon"

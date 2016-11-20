@@ -1,6 +1,7 @@
 package com.smora.arch.webserver;
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
 import android.content.res.AssetManager;
 import android.util.Log;
 
@@ -19,7 +20,7 @@ public class WebServer {
 
     private static final String LOG_TAG = WebServer.class.getSimpleName();
 
-    static volatile WebServer singleton = null;
+    private static volatile WebServer singleton = null;
 
     public static WebServer with(final Context context) {
         if (context == null) {
@@ -98,12 +99,42 @@ public class WebServer {
 
         @Override
         public Response serve(IHTTPSession session) {
-            try {
-                if ("/favicon.ico".equals(session.getUri())) {
-                    return null;
-                }
+            if ("/favicon.ico".equals(session.getUri())) {
+                return null;
+            }
 
-                final InputStream is = assetManager.open(getFileName(session.getUri()));
+            final String fileName = getFileName(session.getUri());
+
+            if (fileName.endsWith(".jpg")) {
+                return serveJpg(fileName);
+            }
+
+            return serveJson(fileName);
+        }
+
+        private Response serveJpg(String fileName) {
+            try {
+
+                final AssetFileDescriptor fileDescriptor = assetManager.openFd(fileName);
+
+                return newFixedLengthResponse(NanoHTTPD.Response.Status.OK, "image/jpeg", assetManager.open(fileName), fileDescriptor.getLength());
+
+            } catch (IOException e) {
+                Log.w(LOG_TAG, "Error server: ", e);
+                Response response = newFixedLengthResponse("Error server : "  + e.getLocalizedMessage());
+                if (e instanceof FileNotFoundException) {
+                    response.setStatus(Response.Status.NOT_FOUND);
+                } else {
+                    response.setStatus(Response.Status.INTERNAL_ERROR);
+                }
+                return response;
+            }
+        }
+
+        private Response serveJson(String fileName) {
+            try {
+
+                final InputStream is = assetManager.open(fileName);
                 int size = is.available();
                 byte buffer[] = new byte[size];
                 is.read(buffer);
@@ -120,7 +151,6 @@ public class WebServer {
                 }
                 return response;
             }
-
         }
 
         private String getFileName(final String uri) {
