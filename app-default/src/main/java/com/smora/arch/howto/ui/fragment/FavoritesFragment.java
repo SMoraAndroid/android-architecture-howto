@@ -5,25 +5,37 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.smora.arch.howto.R;
+import com.smora.arch.howto.data.network.DataNetworkManager;
 import com.smora.arch.howto.data.network.model.Place;
+import com.smora.arch.howto.ui.adapter.PlaceAdapter;
+
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class FavoritesFragment extends Fragment {
 
-    public FavoritesFragment() {
-        // Required empty public constructor
-    }
+    private static final String LOG_TAG = FavoritesFragment.class.getSimpleName();
 
     public static FavoritesFragment newInstance() {
         FavoritesFragment fragment = new FavoritesFragment();
         Bundle args = new Bundle();
         fragment.setArguments(args);
         return fragment;
+    }
+
+    private RecyclerView recyclerView;
+
+    public FavoritesFragment() {
+        // Required empty public constructor
     }
 
     @Override
@@ -35,91 +47,56 @@ public class FavoritesFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         final View view = inflater.inflate(R.layout.fragment_favorites, container, false);
 
-        final RecyclerView recyclerView = (RecyclerView) view.findViewById(R.id.items_recyclerview);
-
-        Place[] places = { new Place("Help"),
-                new Place("Delete"),
-                new Place("Cloud"),
-                new Place("Favorite"),
-                new Place("Like"),
-                new Place("Cloud"),
-                new Place("Favorite"),
-                new Place("Like"),
-                new Place("Cloud"),
-                new Place("Favorite"),
-                new Place("Like"),
-                new Place("Cloud"),
-                new Place("Favorite"),
-                new Place("Like"),
-                new Place("Cloud"),
-                new Place("Favorite"),
-                new Place("Like"),
-                new Place("Cloud"),
-                new Place("Favorite"),
-                new Place("Like"),
-                new Place("Cloud"),
-                new Place("Favorite"),
-                new Place("Like"),
-                new Place("Cloud"),
-                new Place("Favorite"),
-                new Place("Like"),
-                new Place("Cloud"),
-                new Place("Favorite"),
-                new Place("Like"),
-                new Place("Cloud"),
-                new Place("Favorite"),
-                new Place("Like"),
-                new Place("Rating")};
-
-        // 2. set layoutManger
+        recyclerView = (RecyclerView) view.findViewById(R.id.items_recyclerview);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity().getApplicationContext()));
-        // 3. create an adapter
-        PlaceAdapter adapter = new PlaceAdapter(places);
-        // 4. set adapter
-        recyclerView.setAdapter(adapter);
+
+        callListPlaces();
 
         return view;
     }
 
-    public static class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> {
-        private Place[] places;
-
-        public PlaceAdapter(Place[] places) {
-            this.places = places;
-        }
-
-        @Override
-        public PlaceAdapter.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-            View itemLayoutView = LayoutInflater.from(parent.getContext())
-                    .inflate(R.layout.item_place_layout, null);
-
-            ViewHolder viewHolder = new ViewHolder(itemLayoutView);
-            return viewHolder;
-        }
-
-        @Override
-        public void onBindViewHolder(ViewHolder viewHolder, int position) {
-
-            viewHolder.labelTextView.setText(places[position].getLabel());
-
-        }
-
-        public static class ViewHolder extends RecyclerView.ViewHolder {
-
-            public TextView labelTextView;
-
-            public ViewHolder(View itemLayoutView) {
-                super(itemLayoutView);
-                labelTextView = (TextView) itemLayoutView.findViewById(R.id.item_label_textview);
-            }
-        }
-
-
-        // Return the size of your itemsData (invoked by the layout manager)
-        @Override
-        public int getItemCount() {
-            return places.length;
-        }
+    private void callListPlaces() {
+        DataNetworkManager.getService().listPlaces().enqueue(dataCallback);
     }
+
+    private void showProgress() {
+        // TODO
+    }
+
+    private void showPlaces(final List<Place> places) {
+        PlaceAdapter adapter = new PlaceAdapter(places);
+        recyclerView.setAdapter(adapter);
+    }
+
+    private void showEmpty() {
+        // TODO
+    }
+
+    private void showError(final String message) {
+        // TODO
+    }
+
+    private final Callback<List<Place>> dataCallback = new Callback<List<Place>>() {
+        @Override
+        public void onResponse(Call<List<Place>> call, Response<List<Place>> response) {
+            if (!isAdded()) {
+                return;
+            }
+            final List<Place> places = response.body();
+            if (places == null || places.isEmpty()) {
+                showEmpty();
+            }
+            showPlaces(places);
+        }
+
+        @Override
+        public void onFailure(Call<List<Place>> call, Throwable t) {
+            if (!isAdded()) {
+                return;
+            }
+            Log.w(LOG_TAG, "onFailure: ", t);
+            showError("Error when getting data form network.");
+        }
+    };
 
 }
