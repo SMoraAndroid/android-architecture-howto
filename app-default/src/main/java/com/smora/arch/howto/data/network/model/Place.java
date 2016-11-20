@@ -1,13 +1,18 @@
 package com.smora.arch.howto.data.network.model;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Place {
 
     private String id;
     private String label;
     private String country;
-    private String image_id;
-    private String image_author;
-    private String image_credit;
+    @SerializedName("image_id")
+    private String imageId;
+    @SerializedName("image_author")
+    private String imageAuthor;
+    @SerializedName("image_credit")
+    private String imageCredit;
     private String description;
     private Double latitiude;
     private Double longitude;
@@ -24,16 +29,16 @@ public class Place {
         return country;
     }
 
-    public String getImage_id() {
-        return image_id;
+    public String getImageId() {
+        return imageId;
     }
 
-    public String getImage_author() {
-        return image_author;
+    public String getImageAuthor() {
+        return imageAuthor;
     }
 
-    public String getImage_credit() {
-        return image_credit;
+    public String getImageCredit() {
+        return imageCredit;
     }
 
     public String getDescription() {

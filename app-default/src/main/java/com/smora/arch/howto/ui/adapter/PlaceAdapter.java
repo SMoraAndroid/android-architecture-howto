@@ -39,7 +39,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
 
         viewHolder.labelTextView.setText(places.get(position).getLabel());
 
-        picasso.load(DataNetworkManager.getImageUrl(places.get(position).getImage_id())).into(viewHolder.imageView);
+        picasso.load(DataNetworkManager.getImageUrl(places.get(position).getImageId())).into(viewHolder.imageView);
     }
 
     @Override
