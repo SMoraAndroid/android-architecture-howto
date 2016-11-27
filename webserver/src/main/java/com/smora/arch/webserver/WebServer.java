@@ -16,7 +16,7 @@ import fi.iki.elonen.NanoHTTPD;
 
 public class WebServer {
 
-    public static final int SERVER_PORT = 8080;
+    public static final int SERVER_PORT = 8090;
 
     private static final String LOG_TAG = WebServer.class.getSimpleName();
 

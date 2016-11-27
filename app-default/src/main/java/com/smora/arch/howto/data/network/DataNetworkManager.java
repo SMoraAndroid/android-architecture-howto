@@ -5,7 +5,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class DataNetworkManager {
 
-    private static final String END_POINT = "http://localhost:8080";
+    private static final String END_POINT = "http://localhost:8090";
 
     private static final Retrofit RETROFIT = new Retrofit.Builder()
             .baseUrl(END_POINT)
