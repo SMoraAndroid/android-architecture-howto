@@ -24,7 +24,12 @@
     </style>
 
     <style name="TextItemPlaceSupporting" parent="@style/TextAppearance.AppCompat.Small">
-        <item name="android:maxLines">4</item>
+        <item name="android:maxLines">3</item>
         <item name="android:ellipsize">end</item>
     </style>
+
+    <style name="ButtonItemPlaceSeeMore" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:text">@string/item_place_see_more_button</item>
+    </style>
+
 </resources>

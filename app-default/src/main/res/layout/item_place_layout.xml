@@ -25,31 +25,46 @@
                 android:scaleType="centerCrop"/>
 
             <LinearLayout
+                android:id="@+id/item_place_content_layout"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_below="@id/item_place_imageview"
                 android:orientation="vertical"
                 android:paddingTop="24dp"
-                android:paddingBottom="24dp"
+                android:paddingBottom="16dp"
                 android:paddingStart="16dp"
                 android:paddingEnd="16dp"
                 android:background="?attr/selectableItemBackground">
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/item_title_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/TextItemPlaceTitle"/>
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/item_subtitle_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     style="@style/TextItemPlaceSubTitle"/>
-                <TextView
+                <android.support.v7.widget.AppCompatTextView
                     android:id="@+id/item_supporting_textview"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     style="@style/TextItemPlaceSupporting"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/item_place_action_layout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/item_place_content_layout"
+                android:orientation="horizontal"
+                android:padding="8dp">
+                <android.support.v7.widget.AppCompatButton
+                    android:id="@+id/item_see_more_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    style="@style/ButtonItemPlaceSeeMore"/>
             </LinearLayout>
 
         </RelativeLayout>
