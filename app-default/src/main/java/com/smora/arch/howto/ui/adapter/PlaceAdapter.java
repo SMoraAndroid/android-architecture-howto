@@ -37,7 +37,15 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int position) {
 
-        viewHolder.labelTextView.setText(places.get(position).getLabel());
+        final Place place = places.get(position);
+
+        if (place == null) {
+            return;
+        }
+
+        viewHolder.titleTextView.setText(place.getLabel());
+        viewHolder.subtitleTextView.setText(place.getCountry());
+        viewHolder.supportingTextView.setText(place.getDescription());
 
         picasso.load(DataNetworkManager.getImageUrl(places.get(position).getImageId())).into(viewHolder.imageView);
     }
@@ -52,12 +60,16 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
 
     protected static class ViewHolder extends RecyclerView.ViewHolder {
 
-        private TextView labelTextView;
+        private TextView titleTextView;
+        private TextView subtitleTextView;
+        private TextView supportingTextView;
         private ImageView imageView;
 
         private ViewHolder(View itemLayoutView) {
             super(itemLayoutView);
-            labelTextView = (TextView) itemLayoutView.findViewById(R.id.item_label_textview);
+            titleTextView = (TextView) itemLayoutView.findViewById(R.id.item_title_textview);
+            subtitleTextView = (TextView) itemLayoutView.findViewById(R.id.item_subtitle_textview);
+            supportingTextView = (TextView) itemLayoutView.findViewById(R.id.item_supporting_textview);
             imageView = (ImageView) itemLayoutView.findViewById(R.id.item_place_imageview);
         }
     }

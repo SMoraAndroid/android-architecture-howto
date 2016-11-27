@@ -15,4 +15,16 @@
         <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
+    <style name="TextItemPlaceTitle" parent="@style/TextAppearance.AppCompat.Headline">
+
+    </style>
+
+    <style name="TextItemPlaceSubTitle" parent="@style/TextAppearance.AppCompat.Small">
+
+    </style>
+
+    <style name="TextItemPlaceSupporting" parent="@style/TextAppearance.AppCompat.Small">
+        <item name="android:maxLines">4</item>
+        <item name="android:ellipsize">end</item>
+    </style>
 </resources>
