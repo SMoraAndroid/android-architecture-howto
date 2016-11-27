@@ -13,6 +13,7 @@ import android.view.ViewGroup;
 import com.smora.arch.howto.R;
 import com.smora.arch.howto.data.network.DataNetworkManager;
 import com.smora.arch.howto.data.network.model.Place;
+import com.smora.arch.howto.ui.PlaceActivity;
 import com.smora.arch.howto.ui.adapter.PlaceAdapter;
 
 import java.util.List;
@@ -37,6 +38,13 @@ public class FavoritesFragment extends Fragment {
     public FavoritesFragment() {
         // Required empty public constructor
     }
+
+    private final PlaceAdapter.PlaceAdapterCallback placeAdapterCallback = new PlaceAdapter.PlaceAdapterCallback() {
+        @Override
+        public void onSeeMoreButtonClick(String placeId) {
+            getContext().startActivity(PlaceActivity.getStartIntent(getContext(), placeId));
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +72,7 @@ public class FavoritesFragment extends Fragment {
     }
 
     private void showPlaces(final List<Place> places) {
-        PlaceAdapter adapter = new PlaceAdapter(getContext(), places);
+        PlaceAdapter adapter = new PlaceAdapter(getContext(), places, placeAdapterCallback);
         recyclerView.setAdapter(adapter);
     }
 
