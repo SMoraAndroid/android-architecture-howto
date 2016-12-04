@@ -42,6 +42,10 @@
 
     <style name="TextPlaceDescription" parent="@style/TextAppearance.AppCompat.Body1"/>
 
+    <style name="TextPlaceCredits" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:clickable">true</item>
+    </style>
+
     <style name="ButtonPlaceMap" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
         <item name="android:text">@string/place_map_button</item>
     </style>

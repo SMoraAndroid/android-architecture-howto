@@ -9,7 +9,9 @@ import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.text.Html;
 import android.text.TextUtils;
+import android.text.method.LinkMovementMethod;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
@@ -21,6 +23,8 @@ import com.smora.arch.howto.R;
 import com.smora.arch.howto.data.network.DataNetworkManager;
 import com.smora.arch.howto.data.network.model.Place;
 import com.squareup.picasso.Picasso;
+
+import java.net.URLEncoder;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -46,6 +50,7 @@ public class PlaceActivity extends AppCompatActivity {
     private ImageView placeImageView;
     private TextView standFirstTextView;
     private TextView descriptionTextView;
+    private TextView creditsTextView;
     private Button mapButton;
 
     @Override
@@ -61,6 +66,7 @@ public class PlaceActivity extends AppCompatActivity {
         placeImageView = (ImageView) findViewById(R.id.place_image_view);
         standFirstTextView = (TextView) findViewById(R.id.place_standfirst_textview);
         descriptionTextView = (TextView) findViewById(R.id.place_description_textview);
+        creditsTextView = (TextView) findViewById(R.id.place_credits_textview);
         mapButton = (Button) findViewById(R.id.place_map_button);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
@@ -88,6 +94,8 @@ public class PlaceActivity extends AppCompatActivity {
         toolbarLayout.setTitle(place.getLabel());
         standFirstTextView.setText(place.getCountry());
         descriptionTextView.setText(place.getDescription());
+        creditsTextView.setText(Html.fromHtml(getString(R.string.place_credits, URLEncoder.encode(place.getLabel().split(",")[0]), place.getImageAuthor(), place.getImageCredit())));
+        creditsTextView.setMovementMethod(LinkMovementMethod.getInstance());
 
         Picasso.with(getApplicationContext()).load(DataNetworkManager.getImageUrl(place.getImageId())).into(placeImageView);
 
@@ -96,6 +104,7 @@ public class PlaceActivity extends AppCompatActivity {
             mapButton.setOnClickListener(mapButtonOnClickListener);
             mapButton.setTag(getString(R.string.place_map_uri_format, place.getLatitude().toString(), place.getLongitude().toString()));
         }
+
     }
 
     private void showError(final String message) {

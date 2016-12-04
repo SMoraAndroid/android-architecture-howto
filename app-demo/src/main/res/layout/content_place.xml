@@ -12,28 +12,45 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:padding="16dp"
         android:orientation="vertical">
 
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/place_standfirst_textview"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            style="@style/TextPlaceStandFirst"/>
-        <android.support.v7.widget.AppCompatTextView
-            android:id="@+id/place_description_textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            style="@style/TextPlaceDescription"/>
+            android:layout_height="match_parent"
+            android:padding="16dp"
+            android:orientation="vertical">
+
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/place_standfirst_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                style="@style/TextPlaceStandFirst"/>
+            <android.support.v7.widget.AppCompatTextView
+                android:id="@+id/place_description_textview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                style="@style/TextPlaceDescription"/>
+
+        </LinearLayout>
+
         <android.support.v7.widget.AppCompatButton
             android:id="@+id/place_map_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginStart="8dp"
             android:visibility="gone"
             style="@style/ButtonPlaceMap"/>
 
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/place_credits_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="end"
+            android:padding="16dp"
+            android:gravity="end"
+            style="@style/TextPlaceCredits"/>
     </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

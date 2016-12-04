@@ -8,6 +8,7 @@
 
     <string name="place_map_button">See in Maps</string>
     <string name="place_map_uri_format">geo:%1$s,%2$s?z=13</string>
+    <string name="place_credits"> <![CDATA[<b>Credits:</b><br /><a href="http://en.wikipedia.org/w/index.php?search=%1$s">Wikipedia</a><br /><a href="%3$s">Photo by %2$s</a>]]></string>
 
     <string name="action_settings">Settings</string>
 
