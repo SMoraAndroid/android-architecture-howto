@@ -21,7 +21,6 @@
         </activity>
         <activity
             android:name=".ui.PlaceActivity"
-            android:label="@string/title_activity_place"
             android:theme="@style/AppTheme.PlaceActivity">
         </activity>
     </application>

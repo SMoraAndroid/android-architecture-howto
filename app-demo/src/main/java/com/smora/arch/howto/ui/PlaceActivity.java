@@ -2,17 +2,18 @@ package com.smora.arch.howto.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,7 +46,7 @@ public class PlaceActivity extends AppCompatActivity {
     private ImageView placeImageView;
     private TextView standFirstTextView;
     private TextView descriptionTextView;
-
+    private Button mapButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,15 +61,10 @@ public class PlaceActivity extends AppCompatActivity {
         placeImageView = (ImageView) findViewById(R.id.place_image_view);
         standFirstTextView = (TextView) findViewById(R.id.place_standfirst_textview);
         descriptionTextView = (TextView) findViewById(R.id.place_description_textview);
+        mapButton = (Button) findViewById(R.id.place_map_button);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        fab.setOnClickListener(fabOnClickListener);
 
         callGetPlace();
     }
@@ -94,6 +90,12 @@ public class PlaceActivity extends AppCompatActivity {
         descriptionTextView.setText(place.getDescription());
 
         Picasso.with(getApplicationContext()).load(DataNetworkManager.getImageUrl(place.getImageId())).into(placeImageView);
+
+        if (place.getLatitiude() != null && place.getLongitude() != null) {
+            mapButton.setVisibility(View.VISIBLE);
+            mapButton.setOnClickListener(mapButtonOnClickListener);
+            mapButton.setTag(getString(R.string.place_map_uri_format, place.getLatitiude().toString(), place.getLongitude().toString()));
+        }
     }
 
     private void showError(final String message) {
@@ -114,6 +116,23 @@ public class PlaceActivity extends AppCompatActivity {
         public void onFailure(Call<Place> call, Throwable t) {
             Log.w(LOG_TAG, "onFailure: ", t);
             showError("Error when getting data form network.");
+        }
+    };
+
+    private final View.OnClickListener mapButtonOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+            Uri uri = Uri.parse((String) view.getTag());
+            Intent intent = new Intent(Intent.ACTION_VIEW, uri);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
+        }
+    };
+
+    private final View.OnClickListener fabOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View view) {
+
         }
     };
 }

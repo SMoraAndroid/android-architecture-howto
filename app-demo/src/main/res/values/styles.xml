@@ -23,13 +23,10 @@
         <item name="android:windowTranslucentStatus">true</item>
     </style>
 
-    <style name="TextItemPlaceTitle" parent="@style/TextAppearance.AppCompat.Headline">
+    <!-- Places list item -->
+    <style name="TextItemPlaceTitle" parent="@style/TextAppearance.AppCompat.Headline"/>
 
-    </style>
-
-    <style name="TextItemPlaceSubTitle" parent="@style/TextAppearance.AppCompat.Small">
-
-    </style>
+    <style name="TextItemPlaceSubTitle" parent="@style/TextAppearance.AppCompat.Small"/>
 
     <style name="TextItemPlaceSupporting" parent="@style/TextAppearance.AppCompat.Small">
         <item name="android:maxLines">3</item>
@@ -40,15 +37,14 @@
         <item name="android:text">@string/item_place_see_more_button</item>
     </style>
 
-    <style name="TextPlaceStandFirst" parent="@style/TextAppearance.AppCompat.Headline">
+    <!-- Place details screen -->
+    <style name="TextPlaceStandFirst" parent="@style/TextAppearance.AppCompat.Headline"/>
 
+    <style name="TextPlaceDescription" parent="@style/TextAppearance.AppCompat.Body1"/>
+
+    <style name="ButtonPlaceMap" parent="@style/Widget.AppCompat.Button.Borderless.Colored">
+        <item name="android:text">@string/place_map_button</item>
     </style>
-
-    <style name="TextPlaceDescription" parent="@style/TextAppearance.AppCompat.Body1">
-
-    </style>
-
-
 
 
 </resources>
