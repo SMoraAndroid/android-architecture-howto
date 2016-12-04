@@ -21,7 +21,7 @@
        "country":"United States of America",
        "image_id":"9b6c30e1-d4a2-4302-9306-f3db5bd5f90a",
        "description":"Manhattan is the most densely populated borough of New York City, its economic and administrative center, and the city's historical birthplace.",
-       "latitiude":40.790278,
+       "latitude":40.790278,
        "longitude":-73.959722
      },
      {
@@ -30,7 +30,7 @@
        "country":"Italy",
        "image_id":"4b950a69-b225-4b34-9860-5816b57fe2a0",
        "description":"The Cinque Terre is a rugged portion of coast on the Italian Riviera. It is in the Liguria region of Italy, to the west of the city of La Spezia.",
-       "latitiude":44.119389,
+       "latitude":44.119389,
        "longitude":9.728278
      }
   ]
@@ -71,7 +71,7 @@
       "image_author":"Michael Muraz",
       "image_credit":"https://plus.google.com/+MichaelMuraz",
       "description":"Manhattan is the most densely populated borough of New York City, its economic and administrative center, and the city's historical birthplace. The borough is coextensive with New York County, founded on November 1, 1683, as one of the original counties of the U.S. state of New York. The borough consists mostly of Manhattan Island, bounded by the East, Hudson, and Harlem Rivers, and also includes several small adjacent islands and Marble Hill, a small neighborhood on the U.S. mainland.",
-      "latitiude":40.790278,
+      "latitude":40.790278,
       "longitude":-73.959722
   }
   ```

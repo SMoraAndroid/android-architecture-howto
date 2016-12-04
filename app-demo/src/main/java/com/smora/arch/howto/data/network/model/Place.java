@@ -14,7 +14,7 @@ public class Place {
     @SerializedName("image_credit")
     private String imageCredit;
     private String description;
-    private Double latitiude;
+    private Double latitude;
     private Double longitude;
 
     public String getLabel() {
@@ -45,8 +45,8 @@ public class Place {
         return description;
     }
 
-    public Double getLatitiude() {
-        return latitiude;
+    public Double getLatitude() {
+        return latitude;
     }
 
     public Double getLongitude() {

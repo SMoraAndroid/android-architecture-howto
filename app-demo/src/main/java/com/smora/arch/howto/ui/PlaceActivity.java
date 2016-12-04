@@ -91,10 +91,10 @@ public class PlaceActivity extends AppCompatActivity {
 
         Picasso.with(getApplicationContext()).load(DataNetworkManager.getImageUrl(place.getImageId())).into(placeImageView);
 
-        if (place.getLatitiude() != null && place.getLongitude() != null) {
+        if (place.getLatitude() != null && place.getLongitude() != null) {
             mapButton.setVisibility(View.VISIBLE);
             mapButton.setOnClickListener(mapButtonOnClickListener);
-            mapButton.setTag(getString(R.string.place_map_uri_format, place.getLatitiude().toString(), place.getLongitude().toString()));
+            mapButton.setTag(getString(R.string.place_map_uri_format, place.getLatitude().toString(), place.getLongitude().toString()));
         }
     }
 
