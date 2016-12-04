@@ -19,6 +19,10 @@
         <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
+    <style name="AppTheme.PlaceActivity">
+        <item name="android:windowTranslucentStatus">true</item>
+    </style>
+
     <style name="TextItemPlaceTitle" parent="@style/TextAppearance.AppCompat.Headline">
 
     </style>
