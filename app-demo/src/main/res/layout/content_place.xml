@@ -9,10 +9,24 @@
     tools:context="com.smora.arch.howto.ui.PlaceActivity"
     tools:showIn="@layout/activity_place">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="16dp"
+        android:orientation="vertical">
+
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/place_standfirst_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextPlaceStandFirst"/>
+        <android.support.v7.widget.AppCompatTextView
+            android:id="@+id/place_description_textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            style="@style/TextPlaceDescription"/>
+
+    </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>

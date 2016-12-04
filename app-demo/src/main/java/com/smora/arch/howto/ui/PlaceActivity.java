@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -12,6 +13,7 @@ import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.smora.arch.howto.R;
 import com.smora.arch.howto.data.network.DataNetworkManager;
@@ -37,18 +39,26 @@ public class PlaceActivity extends AppCompatActivity {
         return intent;
     }
 
+    private Toolbar toolbar;
+    private CollapsingToolbarLayout toolbarLayout;
     private ImageView placeImageView;
+    private TextView standFirstTextView;
+    private TextView descriptionTextView;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_place);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+
+        toolbarLayout = (CollapsingToolbarLayout) findViewById(R.id.toolbar_layout);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         placeImageView = (ImageView) findViewById(R.id.place_image_view);
+        standFirstTextView = (TextView) findViewById(R.id.place_standfirst_textview);
+        descriptionTextView = (TextView) findViewById(R.id.place_description_textview);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -67,6 +77,9 @@ public class PlaceActivity extends AppCompatActivity {
     }
 
     private void showPlace(@NonNull final Place place) {
+        toolbarLayout.setTitle(place.getLabel());
+        standFirstTextView.setText(place.getCountry());
+        descriptionTextView.setText(place.getDescription());
 
         Picasso.with(getApplicationContext()).load(DataNetworkManager.getImageUrl(place.getImageId())).into(placeImageView);
     }

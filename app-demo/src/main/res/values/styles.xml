@@ -40,4 +40,15 @@
         <item name="android:text">@string/item_place_see_more_button</item>
     </style>
 
+    <style name="TextPlaceStandFirst" parent="@style/TextAppearance.AppCompat.Headline">
+
+    </style>
+
+    <style name="TextPlaceDescription" parent="@style/TextAppearance.AppCompat.Body1">
+
+    </style>
+
+
+
+
 </resources>
