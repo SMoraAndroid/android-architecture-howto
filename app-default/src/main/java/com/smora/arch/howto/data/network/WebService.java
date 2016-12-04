@@ -15,6 +15,6 @@ public interface WebService {
     Call<List<Place>> listPlaces();
 
     @GET("ws/places/{placeId}")
-    Call<Place> getPlace(@Path("placeId") int placeId);
+    Call<Place> getPlace(@Path("placeId") String placeId);
 
 }

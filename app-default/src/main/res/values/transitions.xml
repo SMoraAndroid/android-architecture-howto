@@ -1,0 +1,5 @@
+<resources>
+
+    <string name="transition_name_home_placedetail">homeToPlaceDetail</string>
+
+</resources>

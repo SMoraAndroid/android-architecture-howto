@@ -2,6 +2,7 @@ package com.smora.arch.howto.ui.fragment;
 
 
 import android.os.Bundle;
+import android.support.v4.app.ActivityOptionsCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -40,10 +41,15 @@ public class FavoritesFragment extends Fragment {
     }
 
     private final PlaceAdapter.PlaceAdapterCallback placeAdapterCallback = new PlaceAdapter.PlaceAdapterCallback() {
+
         @Override
-        public void onSeeMoreButtonClick(String placeId) {
-            getContext().startActivity(PlaceActivity.getStartIntent(getContext(), placeId));
+        public void onSeeMoreButtonClick(View transitionView, String placeId) {
+            String transitionName = getString(R.string.transition_name_home_placedetail);
+            ActivityOptionsCompat transitionActivityOptions = ActivityOptionsCompat.makeSceneTransitionAnimation(getActivity(), transitionView, transitionName);
+
+            getContext().startActivity(PlaceActivity.getStartIntent(getContext(), placeId), transitionActivityOptions.toBundle());
         }
+
     };
 
     @Override

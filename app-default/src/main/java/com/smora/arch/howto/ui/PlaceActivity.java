@@ -3,14 +3,24 @@ package com.smora.arch.howto.ui;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
+import android.widget.ImageView;
 
 import com.smora.arch.howto.R;
+import com.smora.arch.howto.data.network.DataNetworkManager;
+import com.smora.arch.howto.data.network.model.Place;
+import com.squareup.picasso.Picasso;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class PlaceActivity extends AppCompatActivity {
 
@@ -27,6 +37,8 @@ public class PlaceActivity extends AppCompatActivity {
         return intent;
     }
 
+    private ImageView placeImageView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +46,9 @@ public class PlaceActivity extends AppCompatActivity {
         setContentView(R.layout.activity_place);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        placeImageView = (ImageView) findViewById(R.id.place_image_view);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -43,5 +58,37 @@ public class PlaceActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        callGetPlace();
     }
+
+    private void callGetPlace() {
+        DataNetworkManager.getService().getPlace(getIntent().getStringExtra(EXTRA_NAME_PLACE_ID)).enqueue(dataCallback);
+    }
+
+    private void showPlace(@NonNull final Place place) {
+
+        Picasso.with(getApplicationContext()).load(DataNetworkManager.getImageUrl(place.getImageId())).into(placeImageView);
+    }
+
+    private void showError(final String message) {
+
+    }
+
+    private final Callback<Place> dataCallback = new Callback<Place>() {
+        @Override
+        public void onResponse(Call<Place> call, Response<Place> response) {
+            final Place place = response.body();
+            if (place == null) {
+                showError("Place not found.");
+            }
+            showPlace(place);
+        }
+
+        @Override
+        public void onFailure(Call<Place> call, Throwable t) {
+            Log.w(LOG_TAG, "onFailure: ", t);
+            showError("Error when getting data form network.");
+        }
+    };
 }

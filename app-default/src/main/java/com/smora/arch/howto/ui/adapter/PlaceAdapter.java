@@ -49,7 +49,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
         viewHolder.titleTextView.setText(place.getLabel());
         viewHolder.subtitleTextView.setText(place.getCountry());
         viewHolder.supportingTextView.setText(place.getDescription());
-        viewHolder.seeMoreButton.setOnClickListener(new SeeMoreOnClickListener(place.getId(), callback));
+        viewHolder.seeMoreButton.setOnClickListener(new SeeMoreOnClickListener(viewHolder.imageView, place.getId(), callback));
 
         picasso.load(DataNetworkManager.getImageUrl(places.get(position).getImageId())).into(viewHolder.imageView);
     }
@@ -81,14 +81,16 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
     }
 
     public interface PlaceAdapterCallback {
-        void onSeeMoreButtonClick(final String placeId);
+        void onSeeMoreButtonClick(View transitionView, String placeId);
     }
 
     private static class SeeMoreOnClickListener implements View.OnClickListener {
+        private final View transitionView;
         private final String placeId;
         private final WeakReference<PlaceAdapterCallback> callbackRef;
 
-        public SeeMoreOnClickListener(final String placeId, final PlaceAdapterCallback callback) {
+        public SeeMoreOnClickListener(final View transitionView, final String placeId, final PlaceAdapterCallback callback) {
+            this.transitionView = transitionView;
             this.placeId = placeId;
             this.callbackRef = new WeakReference<>(callback);
         }
@@ -98,7 +100,7 @@ public class PlaceAdapter extends RecyclerView.Adapter<PlaceAdapter.ViewHolder> 
             if (callbackRef.get() == null) {
                 return;
             }
-            callbackRef.get().onSeeMoreButtonClick(placeId);
+            callbackRef.get().onSeeMoreButtonClick(transitionView, placeId);
         }
     }
 
