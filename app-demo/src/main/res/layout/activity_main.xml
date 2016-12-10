@@ -9,16 +9,18 @@
     tools:context="com.smora.arch.howto.ui.MainActivity">
 
     <android.support.design.widget.AppBarLayout
+        android:id="@+id/app_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:theme="@style/AppTheme.AppBarOverlay.Main">
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
-            app:layout_collapseMode="pin" />
+            app:popupTheme="@style/AppTheme.PopupOverlay.Main"
+            app:layout_collapseMode="pin"
+            app:title="@string/main_title"/>
     </android.support.design.widget.AppBarLayout>
 
     <FrameLayout

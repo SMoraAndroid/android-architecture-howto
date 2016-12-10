@@ -11,17 +11,29 @@
 
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light"/>
-
-    <style name="AppTheme.LaunchActivity">
+    <!-- Launch Activity Themes -->
+    <style name="AppTheme.Launch">
         <item name="android:windowBackground">@color/colorPrimary</item>
     </style>
 
-    <style name="AppTheme.PlaceActivity">
+    <!-- Main Activity Themes -->
+    <style name="AppTheme.Main"/>
+
+    <style name="AppTheme.AppBarOverlay.Main" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay.Main" parent="ThemeOverlay.AppCompat.Light"/>
+
+    <!-- Place Activity Themes -->
+    <style name="AppTheme.Place">
         <item name="android:windowTranslucentStatus">true</item>
     </style>
+
+    <style name="AppTheme.AppBarOverlay.Place" parent="ThemeOverlay.AppCompat.Dark.ActionBar"/>
+
+    <style name="AppTheme.PopupOverlay.Place" parent="ThemeOverlay.AppCompat.Light"/>
+
+
+    <!-- Styles -->
 
     <!-- Places list item -->
     <style name="TextItemPlaceTitle" parent="@style/TextAppearance.AppCompat.Headline"/>
